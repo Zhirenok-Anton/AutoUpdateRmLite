@@ -1,0 +1,24 @@
+{
+  "name": "имя созданной папки",
+  "path": "C:\\updateVersion",
+  "arhOne": {
+    "name": "Test.zip",
+    "pathStart": "C:\\",
+    "pathEnd": "C:\\updateVersion"
+  },
+  "arhTwo": {
+    "name": "",
+    "pathStart": "",
+    "pathEnd": ""
+  },
+  "sql": {
+    "nameDB": "",
+    "location": "",
+    "connection": {
+      "host": "",
+      "port": "",
+      "pass": "",
+      "typeDB": ""
+    }
+  }
+}
