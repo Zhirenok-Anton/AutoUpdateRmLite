@@ -1,24 +1,26 @@
 {
-  "name": "имя созданной папки",
-  "path": "C:\\updateVersion",
+  "nameFolderShop_Lite": "shop-lite-ft-RMLITE-6076-bpk-oms_123456789",
+  "nameFolderRmLite": "rmlite-ft-RMLITE-6076-bpk-oms_123456789",
   "arhOne": {
-    "name": "Test.zip",
-    "pathStart": "C:\\",
-    "pathEnd": "C:\\updateVersion"
+    "name": "shop-lite_5.21.zip",
+    "pathStart": "C:\\Users\\AZhirenok\\Desktop\\RM_Lite",
+    "pathEnd": "C:\\AutoUpdateRMLirte"
   },
   "arhTwo": {
-    "name": "",
-    "pathStart": "",
-    "pathEnd": ""
+    "name": "shop-lite-ft-RMLITE-6076-bpk-oms.zip",
+    "pathStart": "C:\\Users\\AZhirenok\\Desktop\\RM_Lite",
+    "pathEnd": "C:\\AutoUpdateRMlite_version"
   },
-  "sql": {
-    "nameDB": "",
-    "location": "",
+  "db": {
+    "nameDB": "TestDB_4",
+    "postgresPath": "C:\\Program Files\\PostgreSQL\\12\\bin",
+    "postgresDump":"C:\\dump_5_21_3.sql",
     "connection": {
-      "host": "",
-      "port": "",
-      "pass": "",
-      "typeDB": ""
+      "host": "localhost:",
+      "port": "5432",
+      "pass": "postgres",
+      "user": "postgres",
+      "typeDB": "jdbc:postgresql:"
     }
   }
 }
