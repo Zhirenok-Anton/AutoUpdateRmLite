@@ -1,27 +1,19 @@
 package MAIN;
 
-import CMD.CMD;
 import JDBC.JdbcRunner;
+import CMD.CMD;
+import JsonObject.ObjectJSON;
+import JsonObject.ParserGson;
+import com.google.gson.Gson;
 import directory.Directory;
 import zip.UnpackZip;
-
-import java.io.*;
 
 public class Main {
 
     /**
      * Параметры для разархивации основного и создания директорий
      */
-    private static final String startPathBaseZip = "C:\\Users\\AZhirenok\\Desktop\\RM_Lite";//!путь к архиву с версией для обновления
-    private static final String endPathBaseZip = "C:\\AutoUpdateRMLirte"; // !путь куда распаковать версию для обновления
-    private static final String baseZipName = "shop-lite_5.21.zip"; //! название архива
     private static String baseNameDirectory = "";// название директории
-    private static String shopLiteNameDirectory = "shop-lite-ft-RMLITE-6076-bpk-oms_123456789";// !название директории shop-lite
-    private static String rmLiteNameDirectory = "rmlite-ft-RMLITE-6076-bpk-oms_123456789";//!название директории rm-lite
-
-    private static final String startPathNewVersionZip = "C:\\Users\\AZhirenok\\Desktop\\RM_Lite"; //!путь к архиву с обновлением
-    private static final String endPathNewVersionBaseZip = "C:\\AutoUpdateRMlite_version";// !путь куда положить архив с обновлением
-    private static final String newVersionZipName = "shop-lite-ft-RMLITE-6076-bpk-oms.zip";// !как называется версия с обновлением
     private static String newVersionNameDirectory = "";
 
     /**
@@ -37,20 +29,37 @@ public class Main {
 
     public static void main(String[] args) {
 
-
         UnpackZip unpackZip = new UnpackZip();
         Directory directory = new Directory();
         JdbcRunner jdbcRunner = new JdbcRunner();
+        ParserGson parserGson = new ParserGson();
+        ObjectJSON j = parserGson.pars();
         CMD cmd = new CMD();
 
-        /** работа с Директориями*/
-        baseNameDirectory = unpackZip.unpack(startPathBaseZip, endPathBaseZip, baseZipName);
-        newVersionNameDirectory = unpackZip.unpack(startPathNewVersionZip, endPathNewVersionBaseZip, newVersionZipName);
-        directory.createDirectoryRmLite(endPathBaseZip, rmLiteNameDirectory);
-        directory.renameDirectory(endPathBaseZip, baseNameDirectory, shopLiteNameDirectory);
 
-        /** работа с БД*/
-        //cmd.createDB(postgresPath,postgresUser,postgresPassword,postgresNameDB,postgresDump);
+
+        baseNameDirectory = unpackZip.unpack(j.getArhOne().getPathStart(), j.getArhOne().getPathEnd(), j.getArhOne().getName());
+        newVersionNameDirectory = unpackZip.unpack(j.getArhTwo().getPathStart(), j.getArhTwo().getPathEnd(), j.getArhTwo().getName());
+
+        directory.createDirectoryRmLite(j.getArhOne().getPathEnd(), j.getNameFolderRmLite());
+        directory.renameDirectory(j.getArhOne().getPathEnd(), baseNameDirectory, j.getNameFolderShop_Lite());
+
+        // работа с БД
+        cmd.createDB(j.getDb().getPostgresPath(), j.getDb().getConnection().getUser(), j.getDb().getConnection().getPass(), j.getDb().getNameDB());
+        cmd.damp(j.getDb().getPostgresPath(), j.getDb().getConnection().getUser(), j.getDb().getConnection().getPass(), j.getDb().getNameDB(), j.getDb().getPostgresDump());
 
     }
+
+    private String postgresURL(){
+        ParserGson parserGson = new ParserGson();
+        ObjectJSON j = parserGson.pars();
+        return
+                j.getDb().getConnection().getTypeDB()
+                + "////"
+                + j.getDb().getConnection().getHost()
+                + j.getDb().getConnection().getPort()
+                + "//"
+                + j.getDb().getNameDB();
+    }
+
 }
