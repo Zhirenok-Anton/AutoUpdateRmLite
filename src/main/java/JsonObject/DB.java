@@ -5,6 +5,7 @@ public class DB {
     private String postgresPath;
     private String postgresDump;
     private Connection connection;
+    private parameterValue parameterValue;
 
     public String getNameDB() {
         return nameDB;
@@ -36,5 +37,13 @@ public class DB {
 
     public void setConnection(Connection connection) {
         this.connection = connection;
+    }
+
+    public JsonObject.parameterValue getParameterValue() {
+        return parameterValue;
+    }
+
+    public void setParameterValue(JsonObject.parameterValue parameterValue) {
+        this.parameterValue = parameterValue;
     }
 }

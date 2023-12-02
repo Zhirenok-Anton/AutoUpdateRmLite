@@ -1,6 +1,9 @@
 package directory;
 
 import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 public class Directory {
 
@@ -19,5 +22,14 @@ public class Directory {
 
     public void createDirectory(String directory, String endPath) {
         new File(endPath+ "\\" + directory).mkdir();
+    }
+
+    public void deleteDirectory(String path){
+        try {
+            Files.delete(Paths.get(path));
+        }  catch (IOException x) {
+            System.err.println(x);
+        }
+
     }
 }
