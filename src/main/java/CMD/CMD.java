@@ -36,7 +36,7 @@ public class CMD {
         System.out.println("Return code = " + returnCode);
     }
 
-    public void damp(String postgresPath, String postgresDump, String postgresUser, String postgresPassword, String postgresNameDB) {
+    public void damp(String postgresPath, String postgresUser, String postgresPassword, String postgresNameDB, String postgresDump) {
         afterCMD();
         stdin.println("cd " + postgresPath);
         stdin.println("set PGPASSWORD=" + postgresPassword);

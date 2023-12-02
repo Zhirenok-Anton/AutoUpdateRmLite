@@ -2,7 +2,7 @@
   "nameFolderShop_Lite": "shop-lite-ft-RMLITE-6076-bpk-oms_123456789",
   "nameFolderRmLite": "rmlite-ft-RMLITE-6076-bpk-oms_123456789",
   "arhOne": {
-    "name": "shop-lite_5.21.zip",
+    "name": "shop-lite-ft-RMLITE-6061-ikpu_db.zip",
     "pathStart": "C:\\Users\\AZhirenok\\Desktop\\RM_Lite",
     "pathEnd": "C:\\AutoUpdateRMLirte"
   },
@@ -12,7 +12,7 @@
     "pathEnd": "C:\\AutoUpdateRMlite_version"
   },
   "db": {
-    "nameDB": "TestDB_4",
+    "nameDB": "shop_test",
     "postgresPath": "C:\\Program Files\\PostgreSQL\\12\\bin",
     "postgresDump":"C:\\dump_5_21_3.sql",
     "connection": {
@@ -21,6 +21,10 @@
       "pass": "postgres",
       "user": "postgres",
       "typeDB": "jdbc:postgresql:"
+    },
+    "parameterValue": {
+      "salePointCode": "9162",
+      "country": "RUSSIA1"
     }
   }
 }
